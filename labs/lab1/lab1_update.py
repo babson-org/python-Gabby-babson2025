@@ -112,7 +112,7 @@ def caesar_cipher():
     # Prompts user whether they want to encrypt or decrypt
     while True:
         choice = input("Type 'e' to to encrypt or 'd' to decrypt: ").lower()
-        if choice in ['e','d']:
+        if choice is ['e','d']:
             break # Valid choice is entered, either 'e' or 'd'
         else:
             print("Error, please type 'e' or 'd'") # Handles any invalid input
