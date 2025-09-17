@@ -5,7 +5,15 @@ from classes.week00.second_class.utils import clear_screen
 Write down the steps a program would need to make a cup of tea. Then implement a Python 
 function make_tea() that prints each step.
 '''
-# enter your code here
+def making_tea():
+    print("Step 1: boil water")
+    print("Step 2: put tea bag in cup")
+    print("Step 3: pour boiled water into cup")
+    print("Step 4: wait two minutes")
+    print("Step 5: remove tea bag")
+    print("Step 6: stir up and drink!")
+          
+making_tea()
 
 
 pause=input('pause')
@@ -16,8 +24,12 @@ clear_screen()
 Given a list [2, 4, 6, 8, 10], write a program that prints the next three numbers in the list.  
 (the ones after 10)
 '''
-# enter your code here
+numbers = [2,4,6,8,10]
 
+for num in range(numbers[4]+2, numbers[4]+8,2):
+    print(num)
+
+#ASK QUESTION TO CLARIFY HERE 
 
 pause=input('pause')
 clear_screen()
@@ -27,7 +39,10 @@ clear_screen()
 Write a program that asks the user for their first and last name, then prints a greeting:
 "Hello, <first name> <last name>!"
 '''
-# enter your code here
+first_name = input("Enter Your First Name: ")
+last_name = input("Enter Your Last Name: ")
+
+print("Hello, " + first_name + last_name + "!")
 
 
 pause=input('pause')
@@ -37,7 +52,7 @@ clear_screen()
 
 Write a program that prints your Python version and platform using the sys and platform modules.
 '''
-# enter your code here
+# QUESTION HERE
 
 
 pause=input('pause')
@@ -48,7 +63,14 @@ clear_screen()
 Ask the user to input two numbers. Calculate and print their sum, difference, product, 
 and division (both / and //).
 '''
-# enter your code here
+num1 = float(input("Enter first number: "))
+num2 = float(input("Enter second number: "))
+
+sum = num1 + num2
+difference = num1 - num2
+product = num1 * num2
+division = num1 / num2
+floor = num1 // num2
 
 
 pause=input('pause')
@@ -59,8 +81,9 @@ clear_screen()
 Ask the user to input a sentence. Print it in uppercase, lowercase, with the first letter 
 capitalized, and split it into words.
 '''
+sentence = input("Enter Sentence Here: ")
 
-# enter your code here
+print()
 
 
 pause=input('pause')
