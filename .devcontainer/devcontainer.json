@@ -1,12 +1,15 @@
 {
   "name": "Python Dev Environment",
-  "image": "mcr.microsoft.com/devcontainers/python:3.10",
+  "image": "mcr.microsoft.com/devcontainers/python:3.10-bullseye",
+
+  // ?? Core features
   "features": {
     "github-cli": "latest"
   },
 
   "customizations": {
     "vscode": {
+      // ?? Only essential non-AI extensions
       "extensions": [
         "bierner.emojisense",
         "michaelCurrin.auto-commit-msg",
@@ -15,59 +18,84 @@
         "github.codespaces",
         "github.vscode-pull-request-github",
         "github.github-vscode-theme",
-        "esbenp.prettier-vscode",
         "ms-python.python",
         "ms-python.debugpy",
         "ericsia.pythonsnippets3",
         "ms-vscode.remote-repositories",
         "emmanuelbeziat.vscode-great-icons",
-        "formulahendry.code-runner",
         "mathematic.vscode-pdf",
         "ritwickdey.LiveServer",
         "ms-toolsai.jupyter",
         "ms-python.vscode-pylance",
         "ms-toolsai.jupyter-keymap",
+        "yutengjing.open-in-external-app",
         "ms-toolsai.jupyter-renderers"
       ],
+
+      // ?? Settings: AI/Telemetry fully disabled + Python tuned
       "settings": {
-        "github.copilot.enable": {"*": false},
+        // ?? Disable all Copilot & Chat
+        "github.copilot.enable": { "*": false },
         "github.copilot.inlineSuggest.enable": false,
         "github.copilot.editor.enableAutoCompletions": false,
+        "github.copilot.chat.enabled": false,
+        "github.copilot.chat.location": "none",
+        "github.copilot.suggestions.showExamples": false,
         "chat.commandCenter.enabled": false,
         "chat.agent.enabled": false,
-        "inlineChat.accessibleDiffView": "off",
-        "terminal.integrated.initialHint": false,
-
-        // Terminal setup
-        "terminal.integrated.profiles.linux": {
-          "bash": {
-            "path": "/bin/bash"
-          }
+        "chat.showChat": false,
+        "chat.editor.enabled": false,
+        "workbench.chat.enabled": false,
+        "workbench.experimental.chat.enabled": false,
+        "workbench.experimental.commandPaletteChat.enabled": false,
+        "editor.inlineSuggest.enabled": false,
+        "editor.quickSuggestions": {
+          "other": false,
+          "comments": false,
+          "strings": false
         },
-        "terminal.integrated.defaultProfile.linux": "bash",
 
-        // Python environment
-        "python.terminal.activateEnvironment": true,
+        // ?? Block telemetry + auto-AI reinstalls
+        "telemetry.enableTelemetry": false,
+        "telemetry.enableCrashReporter": false,
+        "telemetry.telemetryLevel": "off",
+        "github.telemetry.enabled": false,
+        "workbench.enableExperiments": false,
+        "extensions.autoUpdate": false,
+        "extensions.autoCheckUpdates": false,
+        "extensions.ignoreRecommendations": true,
+
+        // ?? Python environment
         "python.defaultInterpreterPath": "${workspaceFolder}/venv/bin/python",
+        "python.terminal.activateEnvironment": true,
+        "python.analysis.extraPaths": ["${workspaceFolder}"],
+        "python.formatting.provider": "black",
+        "editor.formatOnSave": true,
 
-        // Jupyter behavior
-        "jupyter.enableAutoStart": false
+        // ?? Jupyter & Notebook
+        "jupyter.askForKernelRestart": false,
+        "jupyter.enableAutoStart": false,
+
+        // ?? Terminal defaults
+        "terminal.integrated.profiles.linux": {
+          "bash": { "path": "/bin/bash" }
+        },
+        "terminal.integrated.defaultProfile.linux": "bash"
       }
     }
   },
 
+  // ?? Default user
   "remoteUser": "vscode",
 
+  // ?? Post-creation setup
   "postCreateCommand": "pip install nbstripout && nbstripout --install --attributes .gitattributes && bash .devcontainer/setup.sh",
-  "postStartCommand": "bash .devcontainer/setup.sh",
 
-  // Add PYTHONPATH here ??
+  // ?? Environment variables
   "containerEnv": {
-    "PIP_DISABLE_PIP_VERSION_CHECK": "1",
-    "PYTHONPATH": "/workspaces/${localWorkspaceFolderBasename}"
-  }
+    "PIP_DISABLE_PIP_VERSION_CHECK": "1"
+  },
+
+  // ?? Safety: do not run experimental commands automatically
+  "overrideCommand": true
 }
-
-
-
-
