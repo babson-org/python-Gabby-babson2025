@@ -1,4 +1,10 @@
 def ai_move(board: list[int]):
+# GABBY's CODE STARTS HERE:
+# Loop through each cell within the board
+    for cell in board:
+        if abs(cell) != 10: # This indicates that the space is not already taken
+            return cell # This returns AI chosen cell # as it's "move"
+    return None # If all cells are taken which shouldn't occur in the middle of the game, returns to None to indicate there are no remaining moves
     """
         Simple AI that selects the first available cell.
         Remember board is a list that starts with items 1 - 9
