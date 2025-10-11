@@ -1,3 +1,16 @@
+'''
+Gabby, good jobon your code. Nice use of sum()
+in text_analysis() but you forgot to update 
+your output for words and sentences.
+
+Missing from all 3 parts is your computational thinking component
+where you decompose the problem into logical steps and list any patterns that
+might be helpful.
+
+Grade B+
+
+'''
+
 # ==============================
 # Main Program
 # ==============================

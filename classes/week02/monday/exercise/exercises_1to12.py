@@ -32,6 +32,7 @@ for i in range(3):
     next = nums[-1] + 2 + i * 2
     print(next)
 
+#ASK QUESTION TO CLARIFY HERE 
 
 pause=input('pause')
 clear_screen()
@@ -111,7 +112,7 @@ print(txt.lower())
 print(txt.capitalize())
 print(txt.split())
 
-# enter your code here
+print()
 
 
 pause=input('pause')
