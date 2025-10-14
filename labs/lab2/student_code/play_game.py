@@ -134,7 +134,7 @@ def play_game():
             if play_hard:
                 move = find_move(board, playerTurn)
             else:
-                move = ai_move(board)
+                move = ai_move(board) - 1
 
             # Mark AI's move on the board.
             board[move] = score['ai']
