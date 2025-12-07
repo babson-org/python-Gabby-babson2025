@@ -1,0 +1,36 @@
+from globals import MAX_ROWS, MAX_COLS
+
+def get_board_size():
+    while True:
+        try:
+            rows = int(input(f"Enter number of rows (1-{MAX_ROWS}): "))
+            cols = int(input(f"Enter number of cols (1-{MAX_COLS}): "))
+            if 1 <= rows <= MAX_ROWS and 1 <= cols <= MAX_COLS:
+                return rows, cols
+            else:
+                print(f"Rows and cols must be between 1 and {MAX_ROWS}")
+        except ValueError:
+            print("Invalid input. Enter an integer.")
+
+def get_mine_count(max_mines):
+    while True:
+        try:
+            mines = int(input(f"Enter number of mines (1-{max_mines}): "))
+            if 1 <= mines <= max_mines:
+                return mines
+            else:
+                print(f"Mines must be between 1 and {max_mines}")
+        except ValueError:
+            print("Invalid input. Enter an integer.")
+
+def get_move(rows, cols):
+    while True:
+        try:
+            r = int(input(f"Enter row (0-{rows-1}): "))
+            c = int(input(f"Enter col (0-{cols-1}): "))
+            if 0 <= r < rows and 0 <= c < cols:
+                return r, c
+            else:
+                print(f"Coordinates must be within board bounds.")
+        except ValueError:
+            print("Invalid input. Enter integers.")
