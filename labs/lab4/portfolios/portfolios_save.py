@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 
 # ROOT is the student-repo directory (3 levels up)
-ROOT = Path(__file__).resolve().parents[3]
+ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data"    # student-repo/data
 
 def portfolios_save(self, filename: str = "clients.json"):

@@ -18,8 +18,24 @@ def portfolio_sell_stock(self, sym: str, shares: float, price: float):
     - Increase self.cash by proceeds
     - Hint: the amount you reduce cost is NOT the same as the amount you increase cash
     """
+    pos = _find_position(self, sym)
+    if pos is None:
+        print("Position not found")
+        return
+    if shares <= 0 or shares > pos["shares"]:
+        print("Not enough shares")
+        return
     
-    
+        px = _prices.get_last_close_map([sym])[sym]
+
+  # proportional cost reduction
+    cost_reduction = pos["cost"] * (shares / pos["shares"])
+    pos["shares"] -= shares
+    pos["cost"] -= cost_reduction
+    self.cash += shares * px 
+
+    if pos["shares"] == 0:
+        self.positions.remove(pos)
 
     return
        

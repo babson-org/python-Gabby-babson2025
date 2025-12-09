@@ -24,10 +24,35 @@ def portfolio_buy_stock(self, sym: str, shares: float, price: float):
     - Be sure to decrease the client cash attribute
     NOTE: UI prompts are handled in main.py: this method only prints for invalid ticker and insufficient funds. The rest are handled in main.py
     """
-    
-    
-    
-    return
+# validate ticker
+    if sym not in _prices.DOW30:
+        print("Invalid ticker")
+        return
+# shares > 0
+    if shares <= 0:
+        print("Invalid share amount")
+        return
 
+    # get last close price
+    px = _prices.get_last_close_map([sym])[sym]
+    cost = px * shares
+    if cost > self.cash:
+        print("Insufficient funds")
+        return
+
+    pos = _find_position(self, sym)
+    if pos is None:
+        pos = {
+            "sym": sym,
+            "name": sym,
+            "shares": 0.0,
+            "cost": 0.0
+        }
+        self.positions.append(pos)
+    pos["shares"] += shares
+    pos["cost"] += cost
+    self.cash -= cost
+
+    return
 
 
